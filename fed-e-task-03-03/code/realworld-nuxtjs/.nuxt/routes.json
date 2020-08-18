@@ -1,0 +1,43 @@
+[
+  {
+    "path": "/",
+    "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\layout",
+    "children": [
+      {
+        "path": "",
+        "name": "home",
+        "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\home"
+      },
+      {
+        "path": "/login",
+        "name": "login",
+        "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\login"
+      },
+      {
+        "path": "/register",
+        "name": "register",
+        "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\login"
+      },
+      {
+        "path": "/profile/:username",
+        "name": "profile",
+        "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\profile"
+      },
+      {
+        "path": "/settings",
+        "name": "settings",
+        "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\settings"
+      },
+      {
+        "path": "/article/:slug",
+        "name": "article",
+        "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\article"
+      },
+      {
+        "path": "/editor",
+        "name": "editor",
+        "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\editor"
+      }
+    ]
+  }
+]
