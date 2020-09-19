@@ -1,43 +1,51 @@
 [
   {
     "path": "/",
-    "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\layout",
+    "component": "E:\\\\workspace_web\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\layout",
     "children": [
       {
         "path": "",
         "name": "home",
-        "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\home"
+        "component": "E:\\\\workspace_web\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\home",
+        "_name": "_793ebb28"
       },
       {
         "path": "/login",
         "name": "login",
-        "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\login"
+        "component": "E:\\\\workspace_web\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\login",
+        "_name": "_a25e1b80"
       },
       {
         "path": "/register",
         "name": "register",
-        "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\login"
+        "component": "E:\\\\workspace_web\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\login",
+        "_name": "_a25e1b80"
       },
       {
         "path": "/profile/:username",
         "name": "profile",
-        "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\profile"
+        "component": "E:\\\\workspace_web\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\profile",
+        "_name": "_178432c0"
       },
       {
         "path": "/settings",
         "name": "settings",
-        "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\settings"
+        "component": "E:\\\\workspace_web\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\settings",
+        "_name": "_6a4235ec"
       },
       {
         "path": "/article/:slug",
         "name": "article",
-        "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\article"
+        "component": "E:\\\\workspace_web\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\article",
+        "_name": "_036313e6"
       },
       {
         "path": "/editor",
         "name": "editor",
-        "component": "E:\\\\workspace_learn\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\editor"
+        "component": "E:\\\\workspace_web\\\\fed-e-task\\\\fed-e-task-03-03\\\\code\\\\realworld-nuxtjs\\\\pages\\\\editor",
+        "_name": "_1ec17976"
       }
-    ]
+    ],
+    "_name": "_2a905333"
   }
 ]

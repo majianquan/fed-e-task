@@ -13,10 +13,39 @@
                     <div class="feed-toggle">
                         <ul class="nav nav-pills outline-active">
                             <li class="nav-item">
-                                <a class="nav-link disabled" href="">Your Feed</a>
+                                  <nuxt-link
+                                    class="nav-link"
+                                     :class="{active: tab === 'your_feed'}"
+                                    :to="{
+                                        name: 'home',
+                                        query: { tab:$route.query.tag },
+                                    }"
+                                    exact
+                                    > Your Feed </nuxt-link
+                                >
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="">Global Feed</a>
+                                  <nuxt-link
+                                    class="nav-link"
+                                     :class="{active: tab === 'global_feed'}"
+                                    :to="{
+                                        name: 'home',
+                                        query: { tab:$route.query.tag },
+                                    }"
+                                    exact
+                                    >Global Feed </nuxt-link
+                                >
+                            </li>
+                            <li v-if="tag" class="nav-item">
+                                  <nuxt-link
+                                    class="nav-link"
+                                     :class="{active: tab === 'tag'}"
+                                    :to="{
+                                        name: 'home',
+                                        query: { tag: tag,tab: 'tag'},
+                                    }"
+                                    >#{{tag}} </nuxt-link
+                                >
                             </li>
                         </ul>
                     </div>
@@ -43,11 +72,13 @@
                                     class="author"
                                     >{{ article.author.username }}</nuxt-link
                                 >
-                                <span class="date">{{ article.createdAt }}</span>
+                                <span class="date">{{ article.createdAt | date }}</span>
                             </div>
                             <button
                                 class="btn btn-outline-primary btn-sm pull-xs-right"
                                 :class="{ active: article.favorited }"
+                                :disabled="article.favoriteDisabled"
+                                @click="onFavorite(article)"
                             >
                                 <i class="ion-heart"></i> {{ article.favoritesCount }}
                             </button>
@@ -70,10 +101,12 @@
                                     class="page-link"
                                     :to="{
                                         name: 'home',
-                                        query: { page: item },
-                                    }"
-                                    >{{ item }}</nuxt-link
-                                >
+                                        query: {
+                                          page: item,
+                                          tag: $route.query.tag,
+                                          tab: tag}
+                                        }"
+                                    >{{ item }}</nuxt-link>
                             </li>
                         </ul>
                     </nav>
@@ -84,7 +117,7 @@
                         <p>Popular Tags</p>
 
                         <div class="tag-list">
-                            <a class="tag-pill tag-default">programming</a>
+                            <nuxt-link :to="{name: 'home',query: {tag:item,tab: 'tag'}}" v-for="(item,index) in tags" :key="index" class="tag-pill tag-default">{{item}}</nuxt-link>
                         </div>
                     </div>
                 </div>
@@ -94,30 +127,57 @@
 </template>
 
 <script>
-import { getArticles } from '@/api/articles';
+import { getArticles ,getYourFeedArticles, addFavorite, deleteFavorite} from '@/api/articles';
+import { getTags } from '@/api/tag';
+import {mapState} from 'vuex'
 export default {
     name: 'HomeIndex',
     async asyncData({ query }) {
         const page = Number.parseInt(query.page || 1);
         const limit = 5;
-        const { data } = await getArticles({
+        const tab = query.tab || 'global_feed'
+        const tag = query.tag
+        const loadArticles = tab === 'global_feed' ? getArticles : getYourFeedArticles
+        const [articlesRes,tagData] = await Promise.all(
+          [ loadArticles({
             limit,
             offset: (page - 1) * limit,
-        });
-        console.log(data);
+        }), getTags()])
+        const {articles,articlesCount} = articlesRes.data
+        articles.forEach(item => item.favoriteDisabled = false)
+        const { tags } = tagData.data
         return {
-            articles: data.articles,
-            articlesCount: data.articlesCount,
+            articles,
+            articlesCount,
             limit,
             page,
-        };
+            tags,
+            tab,
+            tag
+        }
     },
-    watchQuery: ['page'],
+    watchQuery: ['page','tag','tab'],
     computed: {
+       ...mapState(['user']),
         totalPage() {
             return Math.ceil(this.articlesCount / this.limit);
         },
     },
+    methods: {
+      async onFavorite(article) {
+        article.favoriteDisabled = true
+        if(article.favorited) {
+          await deleteFavorite(article.slug)
+          article.favorited = false
+          article.favoritesCount -= 1
+        } else {
+          await addFavorite(article.slug)
+          article.favorited = true
+          article.favoritesCount += 1
+        }
+        article.favoriteDisabled = false
+      }
+    }
 };
 </script>
 
