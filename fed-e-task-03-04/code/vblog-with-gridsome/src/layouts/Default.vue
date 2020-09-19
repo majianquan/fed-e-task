@@ -55,10 +55,10 @@
                 <div style="position: absolute; top: 150px; left: 1500px; z-index: 1">
                     <font style="font-size: 23px; color: rgb(255, 255, 255)"><b>♪</b></font>
                 </div>
-                <h1 class="project-name">Laziji</h1>
-                <h2 class="project-tagline">欢迎来到辣子鸡的个人博客。</h2>
-                <a href="https://github.com/GitHub-Laziji" target="_blank" class="btn">GitHub主页</a>
-                <a href="https://github.com/GitHub-Laziji/vblog" target="_blank" class="btn">博客源码</a>
+                <h1 class="project-name">{{name_en}}</h1>
+                <h2 class="project-tagline">欢迎来到{{name_ch}}的个人博客。</h2>
+                <a :href="github_url" target="_blank" class="btn">GitHub主页</a>
+                <a :href="github_url" target="_blank" class="btn">博客源码</a>
             </section>
             <div style="position: relative; z-index: 2; margin: -30px auto auto; width: 64rem">
                 <div class="el-card is-never-shadow">
@@ -316,6 +316,13 @@ export default {
     computed: {
         path() {
             return this.$route.path
+        }
+    },
+    data() {
+        return {
+            name_en: 'jianquan',
+            name_ch: '夜木木',
+            github_url: 'https://github.com//majianquan.github.io'
         }
     }
 }
