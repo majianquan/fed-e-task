@@ -9,7 +9,7 @@
     "start": "nuxt start"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cookieparser": "^0.1.0",
     "dayjs": "^1.8.33",
     "js-cookie": "^2.2.1",
